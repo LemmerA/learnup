@@ -1,13 +1,15 @@
+import java.util.Arrays;
+
 import static Game.Funcs.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        int speedOfPlayer1 = 5;
-        int speedOfPlayer2 = 0;
-        int speedOfPlayer3 = 2;
+        int[] speedArr = {5, 0, 2, 5, 1, 2, 5, 0, 2, 5, 1, 2};
 
-        countLost(speedOfPlayer1, speedOfPlayer2, speedOfPlayer3);
+        System.out.printf("Количество выбывших: %d \n", countLost(speedArr));
+        System.out.println("Скорости выбывших: " + Arrays.toString(lostSpeedArr(speedArr)));
+        System.out.println("Скорости выигравших: " + Arrays.toString(wonSpeedArr(speedArr)));
     }
 
 }

@@ -1,45 +1,92 @@
 package Game;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static Game.Funcs.*;
 
 public class FuncsTests {
+
+    private int[] loseArr = {1, 2, 6};
+    private int[] winArr = {0, 0, 0};
+    private int[] negativeArr = {-1, -10, -3};
+    private int[] emptyArr = new int[0];
+    private int[] maxIntArr = {1, Integer.MAX_VALUE + 1};
+
+    //countLost tests
     @Test
-    public void checkRed(){
-        assertFalse(isGreenLight);
+    public void successAllLoseCount(){
+        assertEquals(3, countLost(loseArr));
     }
 
     @Test
-    public void successAllLoseRed(){
-        int a=1, b=2, c=6;
-        assertFalse(isGreenLight);
-        assertEquals(countLost(a, b, c), 3);
+    public void successAllWinCount(){
+        assertEquals(0, countLost(winArr));
     }
 
     @Test
-    public void successAllWinRed(){
-        int a=0, b=0, c=0;
-        assertFalse(isGreenLight);
-        assertEquals(countLost(a, b, c), 0);
-    }
-
-
-    @Test
-    public void successNegativesRed(){
-        int a=-1, b=-10, c=-3;
-        assertFalse(isGreenLight);
-        assertEquals(countLost(a, b, c), 0);
+    public void successNegativesCount(){
+        assertEquals(0, countLost(negativeArr));
     }
 
     @Test
-    public void successNoArgs(){
-        assertEquals(countLost(), 0);
+    public void successEmptyCount(){
+        assertEquals(0, countLost(emptyArr));
     }
 
     @Test
-    public void successIntMax(){
-        int a=1; int b=Integer.MAX_VALUE + 1;
-        System.out.println(b);
-        assertDoesNotThrow(()-> countLost(a, b));
+    public void successIntMaxCount(){
+        assertDoesNotThrow(()-> countLost(maxIntArr));
+    }
+
+    //lostSpeedArr tests
+    @Test
+    public void successAllLoseLostArr(){
+        assertTrue(Arrays.equals(loseArr, lostSpeedArr(loseArr)));
+    }
+
+    @Test
+    public void successAllWinLostArr(){
+        assertTrue(Arrays.equals(emptyArr, lostSpeedArr(winArr)));
+    }
+
+    @Test
+    public void successNegativesLostArr(){
+        assertTrue(Arrays.equals(emptyArr, lostSpeedArr(negativeArr)));
+    }
+
+    @Test
+    public void successEmptyLostArr(){
+        assertTrue(Arrays.equals(emptyArr, lostSpeedArr(emptyArr)));
+    }
+
+    @Test
+    public void successIntMaxLostArr(){
+        assertDoesNotThrow(()-> lostSpeedArr(maxIntArr));
+    }
+
+    //wonSpeedArr tests
+    @Test
+    public void successAllLoseWonArr(){
+        assertTrue(Arrays.equals(emptyArr, wonSpeedArr(loseArr)));
+    }
+
+    @Test
+    public void successAllWinWonArr(){
+        assertTrue(Arrays.equals(winArr, wonSpeedArr(winArr)));
+    }
+
+    @Test
+    public void successNegativesWonArr(){
+        assertTrue(Arrays.equals(negativeArr, wonSpeedArr(negativeArr)));
+    }
+
+    @Test
+    public void successEmptyWonArr(){
+        assertTrue(Arrays.equals(emptyArr, wonSpeedArr(emptyArr)));
+    }
+
+    @Test
+    public void successIntMaxWonArr(){
+        assertDoesNotThrow(()-> wonSpeedArr(maxIntArr));
     }
 }
