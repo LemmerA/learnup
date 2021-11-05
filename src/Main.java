@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        boolean isGreenLight = false;
+        boolean isGreenLight = true;
 
-        int speedOfPlayer1 = 5;
-        int speedOfPlayer2 = 0;
+        int speedOfPlayer1 = 2;
+        int speedOfPlayer2 = 2;
         int speedOfPlayer3 = 2;
 
         System.out.println(countLost(isGreenLight,speedOfPlayer1, speedOfPlayer2, speedOfPlayer3));
