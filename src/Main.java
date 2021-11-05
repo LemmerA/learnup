@@ -6,15 +6,12 @@ public class Main {
         int speedOfPlayer2 = 0;
         int speedOfPlayer3 = 2;
 
-
-        if (!isGreenLight) {
-            System.out.println(countLost(speedOfPlayer1, speedOfPlayer2, speedOfPlayer3));
-        }
+        System.out.println(countLost(isGreenLight,speedOfPlayer1, speedOfPlayer2, speedOfPlayer3));
     }
-    public static int countLost(int ...speeds){
+    public static int countLost(boolean lightCheck, int ...speeds){
         int counter = 0;
         for (int i=0;  i < speeds.length; i++) {
-            if (speeds[i] > 0){
+            if (lightCheck == false && speeds[i] > 0){
                 counter++;
             }
         }
